@@ -17,7 +17,8 @@
 </head>
 
 <body>
-    {{ block "main" . }}
+  {{ block "main" . }}
+      {{ partial "menu.html" . }}
     {{ block "section_title" . }}
     <header class="wrap flex-container">
         <h1>{{ .Title | markdownify }}</h1>
@@ -40,6 +41,9 @@
     <footer class="flex-container footer">{{ partial "footer.html" . }}</footer>
     {{ end }}
     {{ end }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/js/lightbox.js"></script>
+    <script src="/js/menu.js"></script>
 </body>
 
 </html>

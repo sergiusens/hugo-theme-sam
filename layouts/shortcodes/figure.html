@@ -1,0 +1,25 @@
+<!-- image -->
+<!-- https://github.com/gohugoio/hugo/issues/4406 -->
+<!-- https://github.com/gohugoio/hugo/issues/4441 -->
+{{- $imageName := .Get "src" -}}
+
+<figure {{ with .Get "class" }} class="{{ . }}"{{ end }}
+	{{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}class="captioned"{{ end }}>
+  <a href="{{ .Get "src" }}" data-lightbox="grouped">
+    <img src="{{ $imageName }}"
+         alt="{{ if (or (.Get "alt") (.Get "caption")) }}
+						    {{ with .Get "alt"}}
+								      {{- . -}}
+								      {{else}}
+								      {{- .Get "caption" | markdownify | plainify -}}
+											{{ end }}
+											{{ else }}
+											{{- .Get "src" -}}
+												      {{ end }}"
+         {{- with .Get "width" }}width="{{ . }}" {{ end -}}
+         {{- with .Get "height" }}height="{{ . }}" {{ end -}}/>
+  </a>
+
+
+</figure>
+<!-- image -->
